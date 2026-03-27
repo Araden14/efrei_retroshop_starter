@@ -15,6 +15,9 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
+    client: {
+      overlay:false
+    }
   },
   module: {
     rules: [
@@ -24,7 +27,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ['@babel/preset-env', ['@babel/preset-react', { runtime: 'automatic' }]],
           },
         },
       },

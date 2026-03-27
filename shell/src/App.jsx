@@ -1,10 +1,7 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect } from 'react';
 import eventBus from 'shared/eventBus';
 import './App.css';
-
-// Imports des 3 MFEs avec React.lazy()
-const ProductGrid = lazy(() => import('mfeProduct/ProductGrid'));
-const Cart = lazy(() => import('cart/Cart'));
+import { RemoteMFE } from './remoteMFE';
 
 function LoadingFallback({ name }) {
   return <div className="loading-fallback">Chargement {name}...</div>;
@@ -28,20 +25,14 @@ function App() {
       </header>
       <main className="shell-main">
         <section className="product-area">
-          <Suspense fallback={<LoadingFallback name="Products" />}>
-            <ProductGrid />
-          </Suspense>
+          <RemoteMFE name="Products" importFn={() => import('mfeProduct/ProductGrid')} />
         </section>
         <aside className="cart-area">
-          <Suspense fallback={<LoadingFallback name="Cart" />}>
-            <Cart />
-          </Suspense>
+          <RemoteMFE name="Cart" importFn={() => import('cart/Cart')} />
         </aside>
       </main>
       <section className="reco-area">
-        {/* <Suspense fallback={<LoadingFallback name="Recommendations" />}>
-          <Recommendations />
-        </Suspense> */}
+          <RemoteMFE name="Recommendations" importFn={() => import('mfeReco/RecoList')} />
       </section>
     </div>
   );
