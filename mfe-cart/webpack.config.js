@@ -40,7 +40,7 @@ module.exports = {
       name: "cart",                      
       filename: "cart.js",          
       exposes: {
-        "./App": "./src/App",   
+        "./Cart": "./components/Cart",   
       },
     }),
     new HtmlWebpackPlugin({
