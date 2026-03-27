@@ -9,10 +9,14 @@ function Cart() {
 
   useEffect(() => {
     // TODO: ecouter les ajouts de produits et mettre a jour le state
+    eventBus.on('cart:add', (product) => {
+      setItems(prev => [...prev, { ...product, cartId: Date.now() }]);
+    })
   }, []);
 
   useEffect(() => {
     // TODO: notifier le reste de l'application quand le panier change
+    eventBus.emit('cart:update', items.length);
   }, [items]);
 
   const handleRemove = (cartId) => {

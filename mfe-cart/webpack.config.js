@@ -37,6 +37,15 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       // TODO: configurer ce MFE pour exposer le composant Cart
+      name: "cart",                      
+      filename: "cart.js",          
+      exposes: {
+        "./Cart": "./src/components/Cart",
+      },
+      shared: {
+        react: { singleton: true, requiredVersion: '^18.2.0' },
+        'react-dom': { singleton: true, requiredVersion: '^18.2.0' },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
