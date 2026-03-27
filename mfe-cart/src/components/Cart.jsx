@@ -9,6 +9,9 @@ function Cart() {
 
   useEffect(() => {
     // TODO: ecouter les ajouts de produits et mettre a jour le state
+    eventBus.on('cart:add', (product) => {
+      setItems(prev => [...prev, { ...product, cartId: Date.now() }]);
+    })
   }, []);
 
   useEffect(() => {

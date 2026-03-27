@@ -37,6 +37,11 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       // TODO: configurer ce MFE pour exposer le composant Cart
+      name: "cart",                      
+      filename: "cart.js",          
+      exposes: {
+        "./App": "./src/App",   
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
