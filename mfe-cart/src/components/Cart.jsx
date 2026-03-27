@@ -16,6 +16,7 @@ function Cart() {
 
   useEffect(() => {
     // TODO: notifier le reste de l'application quand le panier change
+    eventBus.emit('cart:update', items.length);
   }, [items]);
 
   const handleRemove = (cartId) => {
