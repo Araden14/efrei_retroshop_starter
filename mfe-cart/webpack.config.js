@@ -40,7 +40,11 @@ module.exports = {
       name: "cart",                      
       filename: "cart.js",          
       exposes: {
-        "./Cart": "./components/Cart",   
+        "./Cart": "./src/components/Cart",
+      },
+      shared: {
+        react: { singleton: true, requiredVersion: '^18.2.0' },
+        'react-dom': { singleton: true, requiredVersion: '^18.2.0' },
       },
     }),
     new HtmlWebpackPlugin({
