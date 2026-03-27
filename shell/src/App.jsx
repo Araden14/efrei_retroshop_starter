@@ -4,7 +4,7 @@ import './App.css';
 
 // Imports des 3 MFEs avec React.lazy()
 const ProductGrid = lazy(() => import('mfeProduct/ProductGrid'));
-const Cart = lazy(() => import('mfeCart/Cart'));
+const Cart = lazy(() => import('cart/Cart'));
 
 function LoadingFallback({ name }) {
   return <div className="loading-fallback">Chargement {name}...</div>;
@@ -39,9 +39,9 @@ function App() {
         </aside>
       </main>
       <section className="reco-area">
-        <Suspense fallback={<LoadingFallback name="Recommendations" />}>
+        {/* <Suspense fallback={<LoadingFallback name="Recommendations" />}>
           <Recommendations />
-        </Suspense>
+        </Suspense> */}
       </section>
     </div>
   );
